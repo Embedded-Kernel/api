@@ -1,7 +1,7 @@
 package com.edu.smartstudentcard.model;
 
 
-import com.example.classc.enums.ERoleName;
+import com.edu.smartstudentcard.enums.ERoleName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

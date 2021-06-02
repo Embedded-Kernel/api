@@ -1,6 +1,6 @@
 package com.edu.smartstudentcard.dto;
 
-import com.example.classc.enums.ERoleName;
+import com.edu.smartstudentcard.enums.ERoleName;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

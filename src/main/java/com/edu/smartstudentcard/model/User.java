@@ -1,6 +1,6 @@
 package com.edu.smartstudentcard.model;
 
-import com.example.classc.enums.EAccountStatus;
+import com.edu.smartstudentcard.enums.EAccountStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -46,7 +46,7 @@ public class User {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<com.example.classc.model.Role> roles = new HashSet<>();
+	private Set<com.edu.smartstudentcard.model.Role> roles = new HashSet<>();
 
 	public User() {
 
@@ -153,11 +153,11 @@ public class User {
 		this.activationCode = activationCode;
 	}
 
-	public Set<com.example.classc.model.Role> getRoles() {
+	public Set<com.edu.smartstudentcard.model.Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<com.example.classc.model.Role> roles) {
+	public void setRoles(Set<com.edu.smartstudentcard.model.Role> roles) {
 		this.roles = roles;
 	}
 

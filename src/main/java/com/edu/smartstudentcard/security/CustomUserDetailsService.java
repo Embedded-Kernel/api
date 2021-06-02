@@ -1,7 +1,7 @@
 package com.edu.smartstudentcard.security;
 
-import com.example.classc.model.User;
-import com.example.classc.repository.IUserRepository;
+import com.edu.smartstudentcard.model.User;
+import com.edu.smartstudentcard.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

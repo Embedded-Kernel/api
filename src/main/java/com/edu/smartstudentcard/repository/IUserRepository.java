@@ -1,6 +1,6 @@
 package com.edu.smartstudentcard.repository;
 
-import com.example.classc.model.User;
+import com.edu.smartstudentcard.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

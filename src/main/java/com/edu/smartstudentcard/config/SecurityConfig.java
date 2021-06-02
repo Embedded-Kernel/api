@@ -1,8 +1,8 @@
 package com.edu.smartstudentcard.config;
 
-import com.example.classc.security.CustomUserDetailsService;
-import com.example.classc.security.JwtAuthenticationEntryPoint;
-import com.example.classc.security.JwtAuthenticationFilter;
+import com.edu.smartstudentcard.security.CustomUserDetailsService;
+import com.edu.smartstudentcard.security.JwtAuthenticationEntryPoint;
+import com.edu.smartstudentcard.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

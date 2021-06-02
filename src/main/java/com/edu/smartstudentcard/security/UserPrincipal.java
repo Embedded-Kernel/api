@@ -1,6 +1,6 @@
 package com.edu.smartstudentcard.security;
 
-import com.example.classc.model.User;
+import com.edu.smartstudentcard.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

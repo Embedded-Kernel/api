@@ -1,14 +1,14 @@
 package com.edu.smartstudentcard.controller;
 
-import com.example.classc.dto.LoginRequest;
-import com.example.classc.dto.SignUpRequest;
-import com.example.classc.enums.EAccountStatus;
-import com.example.classc.model.Role;
-import com.example.classc.model.User;
-import com.example.classc.repository.IRoleRepository;
-import com.example.classc.repository.IUserRepository;
-import com.example.classc.security.JwtTokenProvider;
-import com.example.classc.util.JwtAuthenticationResponse;
+import com.edu.smartstudentcard.dto.LoginRequest;
+import com.edu.smartstudentcard.dto.SignUpRequest;
+import com.edu.smartstudentcard.enums.EAccountStatus;
+import com.edu.smartstudentcard.model.Role;
+import com.edu.smartstudentcard.model.User;
+import com.edu.smartstudentcard.repository.IRoleRepository;
+import com.edu.smartstudentcard.repository.IUserRepository;
+import com.edu.smartstudentcard.security.JwtTokenProvider;
+import com.edu.smartstudentcard.util.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
