@@ -17,7 +17,7 @@ import java.util.Set;
 public class JwtTokenProvider {
 	private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
-	@Value("${jwt.security.key}")
+	@Value("j3H5Ld5nYmGWyULy6xwpOgfSH++NgKXnJMq20vpfd+8=t")
 	private String jwtSecret;
 
 	@Value("${jwt.security.expirationInMs}")

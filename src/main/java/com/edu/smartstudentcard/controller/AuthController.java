@@ -3,6 +3,7 @@ package com.edu.smartstudentcard.controller;
 import com.edu.smartstudentcard.dto.LoginRequest;
 import com.edu.smartstudentcard.dto.SignUpRequest;
 import com.edu.smartstudentcard.enums.EAccountStatus;
+import com.edu.smartstudentcard.enums.ERoleName;
 import com.edu.smartstudentcard.model.Role;
 import com.edu.smartstudentcard.model.User;
 import com.edu.smartstudentcard.repository.IRoleRepository;
@@ -89,7 +90,9 @@ public class AuthController {
 		
 		Optional<Role> userRole = roleRepository.findByName(signUpRequest.getRoleName());
 
-		user.setRoles(Collections.singleton(userRole.get()));
+//		System.out.println("User roles:          "+userRole.get());
+//		user.setRoles(Collections.singleton(userRole.get()));
+		user.setRoles(Collections.singleton( roleRepository.findByName(ERoleName.ROLE_ADMIN).get()));
 
 		User result = userRepository.save(user);
 		
