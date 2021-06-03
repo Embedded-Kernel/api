@@ -1,20 +1,27 @@
 package com.edu.smartstudentcard.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
+@Data
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    private User user;
+
     @NotBlank
     private String className;
     @NotBlank
-    private int academicYear;
+    private String academicYear;
 
     private String dormNbr;
 

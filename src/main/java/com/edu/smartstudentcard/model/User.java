@@ -26,13 +26,18 @@ public class User {
 
 	private String fullName;
 
+	private String imageUrl;
+
 	@NotNull
+	@Column(unique = true)
 	private String username;
 
+	@Column(unique = true)
 	private String mobile;
 
 	@NotNull
 	@Email
+	@Column(unique = true)
 	private String email;
 
 	@Enumerated(EnumType.STRING)
@@ -133,8 +138,11 @@ public class User {
 		return status;
 	}
 
+//	public void setStatus(EAccountStatus status) {
+//		this.status = status;
+//	}
 	public void setStatus(EAccountStatus status) {
-		this.status = status;
+		this.status = EAccountStatus.ACTIVE;
 	}
 
 	public String getPassword() {
