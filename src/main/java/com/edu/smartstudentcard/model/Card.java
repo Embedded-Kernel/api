@@ -1,5 +1,6 @@
 package com.edu.smartstudentcard.model;
 
+import com.edu.smartstudentcard.enums.ECardStatus;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -12,13 +13,15 @@ import javax.persistence.Table;
 @Data
 public class Card {
     @Id
-    private Long id;
+    private String id;
     @OneToOne
     private User user;
 
-    private String status;
+    private ECardStatus status;
 
     private Float amount;
 
-
+    public void setAutoStatus() {
+        this.status = ECardStatus.ACTIVE;
+    }
 }

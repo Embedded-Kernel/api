@@ -138,10 +138,10 @@ public class User {
 		return status;
 	}
 
-//	public void setStatus(EAccountStatus status) {
-//		this.status = status;
-//	}
 	public void setStatus(EAccountStatus status) {
+		this.status = status;
+	}
+	public void setAutoStatus() {
 		this.status = EAccountStatus.ACTIVE;
 	}
 
@@ -169,7 +169,7 @@ public class User {
 		this.activationCode = activationCode;
 	}
 
-	public Set<com.edu.smartstudentcard.model.Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
