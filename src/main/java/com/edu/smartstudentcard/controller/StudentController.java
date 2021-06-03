@@ -106,6 +106,15 @@ public class StudentController {
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("User not found", false));
         }
 
+        //Update user credentials
+        User userToUpdate = user.get();
+        userToUpdate.setFirstName(studentDto.getFirstName());
+        userToUpdate.setLastName(studentDto.getLastName());
+        userToUpdate.setImageUrl(studentDto.getImageUrl());
+        userToUpdate.setPassword(studentDto.getPassword());
+
+
+        //Update Student
         if(StudentData.isPresent()){
             Student _student = StudentData.get();
             _student.setUser(user.get());

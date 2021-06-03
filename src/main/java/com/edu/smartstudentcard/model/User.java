@@ -145,6 +145,14 @@ public class User {
 		this.status = EAccountStatus.ACTIVE;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public String getPassword() {
 		return password;
 	}
