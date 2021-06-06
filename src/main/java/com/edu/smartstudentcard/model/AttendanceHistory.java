@@ -23,12 +23,7 @@ public class AttendanceHistory {
     private Event event;
 
     @NotBlank
-    private Date dateOfTransaction;
+    private Date dateOfEvent;
 
-    @NotBlank
-    private Float previousAmount;
-
-    @NotBlank
-    private Float amountRemained;
 
 }

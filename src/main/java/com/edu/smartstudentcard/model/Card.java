@@ -15,13 +15,24 @@ public class Card {
     @Id
     private String id;
     @OneToOne
-    private User user;
+    private Student student;
 
     private ECardStatus status;
 
-    private Float amount;
+    private Double amount;
 
     public void setAutoStatus() {
         this.status = ECardStatus.ACTIVE;
+    }
+
+    public void setAutoAmount(){
+        this.amount = 0.0;
+    }
+    public void withdraw(Float amountToWithdraw) {
+        this.amount = amount - amountToWithdraw;
+    }
+
+    public void deposit(Float amountToDeposit) {
+        this.amount = amount - amountToDeposit;
     }
 }

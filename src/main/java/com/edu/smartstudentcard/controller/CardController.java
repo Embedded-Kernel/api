@@ -1,10 +1,13 @@
 package com.edu.smartstudentcard.controller;
 
+import com.edu.smartstudentcard.dto.CreateCardDto;
 import com.edu.smartstudentcard.dto.UpdateCardDto;
 import com.edu.smartstudentcard.model.Card;
+import com.edu.smartstudentcard.model.Student;
 import com.edu.smartstudentcard.model.User;
 import com.edu.smartstudentcard.model.Card;
 import com.edu.smartstudentcard.repository.ICardRepository;
+import com.edu.smartstudentcard.repository.IStudentRepository;
 import com.edu.smartstudentcard.repository.IUserRepository;
 import com.edu.smartstudentcard.repository.ICardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +25,28 @@ public class CardController {
     private ICardRepository cardRepository;
 
     @Autowired
-    private IUserRepository userRepository;
+    private IStudentRepository studentRepository;
 
     //Add card
     @PostMapping("")
-    public Card addCard(@RequestBody Card card){
-        return cardRepository.save(card);
+    public Card addCard(@RequestBody CreateCardDto cardDto){
+
+        //Check if Student exists
+        Optional<Student> student = studentRepository.findById(cardDto.getStudentID());
+
+        //Check if card exists
+        Optional<Card> newCard = cardRepository.findById(cardDto.getId());
+
+        if(!newCard.isPresent()){
+            Card cardToSave = newCard.get();
+            cardToSave.setId(cardDto.getId());
+            cardToSave.setAutoAmount();
+            cardToSave.setAutoStatus();
+            cardToSave.setStudent(student.get());
+
+            return cardRepository.save(cardToSave);
+        }
+        return null;
     }
 
     //Get card by Id
@@ -46,15 +65,15 @@ public class CardController {
     //Update card by Id
     @PutMapping("/{id}")
     public ResponseEntity<Card> updateCardById(@PathVariable String id, @RequestBody UpdateCardDto cardDto){
-        Optional<User> user = userRepository.findById(cardDto.getUserId());
-        User userToSave = user.get();
+        Optional<Student> student = studentRepository.findById(cardDto.getStudentId());
+        Student studentToSave = student.get();
 
         Optional<Card> cardData = cardRepository.findById(id);
 
         if(cardData.isPresent()){
             Card _card = cardData.get();
             _card.setId(cardDto.getId());
-            _card.setUser(userToSave);
+            _card.setStudent(studentToSave);
             _card.setStatus(cardDto.getCardStatus());
 
             return new ResponseEntity<>(cardRepository.save(_card),HttpStatus.OK);

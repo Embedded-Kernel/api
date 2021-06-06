@@ -112,12 +112,13 @@ public class StudentController {
         userToUpdate.setLastName(studentDto.getLastName());
         userToUpdate.setImageUrl(studentDto.getImageUrl());
         userToUpdate.setPassword(studentDto.getPassword());
+        userRepository.save(userToUpdate);
 
 
         //Update Student
         if(StudentData.isPresent()){
             Student _student = StudentData.get();
-            _student.setUser(user.get());
+            _student.setUser(userToUpdate);
             _student.setClassName(studentDto.getClassName());
             _student.setAcademicYear(studentDto.getAcademicYear());
             _student.setDormNbr(studentDto.getDormNumber());

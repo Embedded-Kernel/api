@@ -1,10 +1,13 @@
 package com.edu.smartstudentcard.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table
+@Data
 public class TransactionHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,12 +16,9 @@ public class TransactionHistory {
     @ManyToOne
     private Card card;
 
-    @ManyToOne
-    private Event event;
-
     private Date dateOfTransaction;
 
-    private Float previousAmount;
+    private Double previousAmount;
 
-    private Float amountRemained;
+    private Double amountRemained;
 }

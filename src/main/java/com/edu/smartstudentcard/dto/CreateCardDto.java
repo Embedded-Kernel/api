@@ -15,6 +15,9 @@ public class CreateCardDto {
     private String id;
 
     @NotNull
+    private Long studentID;
+
+    @NotNull
     private String userId;
 
 }

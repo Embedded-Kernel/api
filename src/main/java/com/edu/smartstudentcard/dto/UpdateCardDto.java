@@ -13,7 +13,7 @@ public class UpdateCardDto {
     private String id;
 
     @NotNull
-    private Long userId;
+    private Long studentId;
 
     @NotNull
     private ECardStatus cardStatus;
