@@ -14,6 +14,7 @@ public class TransactionHistory {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "card_id")
     private Card card;
 
     private Date dateOfTransaction;
