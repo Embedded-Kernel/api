@@ -2,6 +2,7 @@ package com.edu.smartstudentcard.controller;
 
 import com.edu.smartstudentcard.dto.CreateCardDto;
 import com.edu.smartstudentcard.dto.UpdateCardDto;
+import com.edu.smartstudentcard.enums.ERoleName;
 import com.edu.smartstudentcard.model.Card;
 import com.edu.smartstudentcard.model.Student;
 import com.edu.smartstudentcard.model.User;
@@ -28,24 +29,34 @@ public class CardController {
     @Autowired
     private IStudentRepository studentRepository;
 
+    @Autowired
+    private IUserRepository userRepository;
+
     //Add card
     @PostMapping("")
     public Card addCard(@RequestBody CreateCardDto cardDto){
 
-        //Check if Student exists
-        Optional<Student> student = studentRepository.findById(cardDto.getStudentID());
+        //Get user from unique UserName
+        Optional<User> user = userRepository.findByUsername(cardDto.getStudentUserName());
 
-        //Check if card exists
-        Optional<Card> newCard = cardRepository.findById(cardDto.getId());
+        //Check if User is a student
+        if(user.get().getRoles().toString() == ERoleName.STUDENT.toString()) {
 
-        if(!newCard.isPresent()){
-            Card cardToSave = newCard.get();
-            cardToSave.setId(cardDto.getId());
-            cardToSave.setAutoAmount();
-            cardToSave.setAutoStatus();
-            cardToSave.setStudent(student.get());
+            //Check if student exists
+            Optional<Student> newStudent = studentRepository.findByUser(user.get());
 
-            return cardRepository.save(cardToSave);
+            //Check if card exists
+            Optional<Card> newCard = cardRepository.findById(cardDto.getId());
+
+            if (!newCard.isPresent()) {
+                Card cardToSave = newCard.get();
+                cardToSave.setId(cardDto.getId());
+                cardToSave.setAutoAmount();
+                cardToSave.setAutoStatus();
+                cardToSave.setStudent(newStudent.get());
+
+                return cardRepository.save(cardToSave);
+            }
         }
         return null;
     }
