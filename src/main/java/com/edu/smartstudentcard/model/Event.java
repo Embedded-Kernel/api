@@ -13,6 +13,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @Column(unique = true)
     private String eventName;
     @NotNull
     private String description;
