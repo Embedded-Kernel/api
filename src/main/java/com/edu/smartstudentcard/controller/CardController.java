@@ -19,6 +19,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 @RequestMapping("/api/cards")
 public class CardController {
     @Autowired
