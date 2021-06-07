@@ -2,6 +2,7 @@ package com.edu.smartstudentcard.model;
 
 import com.edu.smartstudentcard.enums.EAccountStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="users")
+@Data
 public class User {
 
 	@Id
@@ -47,11 +49,14 @@ public class User {
 	@NotNull
 	private String password;
 
+	@OneToOne
+	private Student student;
+
 	private String activationCode;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<com.edu.smartstudentcard.model.Role> roles = new HashSet<>();
+	private Set<Role> roles = new HashSet<>();
 
 	public User() {
 
@@ -66,6 +71,7 @@ public class User {
 		this.mobile = mobile;
 		this.email = email;
 		this.password = password;
+		this.status = EAccountStatus.ACTIVE;
 	}
 
 	public User(@NotNull(message = "first name is compulsory") String firstName,
@@ -77,104 +83,4 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public EAccountStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(EAccountStatus status) {
-		this.status = status;
-	}
-	public void setAutoStatus() {
-		this.status = EAccountStatus.ACTIVE;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getActivationCode() {
-		return activationCode;
-	}
-
-	public void setActivationCode(String activationCode) {
-		this.activationCode = activationCode;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<com.edu.smartstudentcard.model.Role> roles) {
-		this.roles = roles;
-	}
-
 }

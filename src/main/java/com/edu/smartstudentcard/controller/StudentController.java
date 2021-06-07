@@ -66,7 +66,7 @@ public class StudentController {
         newUser.setUsername(studentDto.getUsername());
         newUser.setEmail(studentDto.getEmail());
         newUser.setMobile(studentDto.getMobile());
-        newUser.setAutoStatus();
+       // newUser.setAutoStatus();
         newUser.setPassword(passwordEncoder.encode(studentDto.getPassword()));
 
         Optional<Role> userRole = roleRepository.findByName(ERoleName.STUDENT);
