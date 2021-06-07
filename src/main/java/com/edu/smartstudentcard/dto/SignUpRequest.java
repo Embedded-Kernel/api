@@ -1,11 +1,15 @@
 package com.edu.smartstudentcard.dto;
 
+import com.edu.smartstudentcard.enums.EGender;
 import com.edu.smartstudentcard.enums.ERoleName;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-@SuppressWarnings("unused")
+@Getter
+@Setter
 public class SignUpRequest {
 
 	@NotBlank
@@ -13,6 +17,9 @@ public class SignUpRequest {
 
 	@NotBlank
 	private String lastName;
+
+	@NotBlank
+	private EGender gender;
 
 	@NotBlank
 	private String mobile;
@@ -25,52 +32,5 @@ public class SignUpRequest {
 
 	private ERoleName roleName;
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public ERoleName getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(ERoleName roleName) {
-		this.roleName = roleName;
-	}
 	
 }

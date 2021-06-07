@@ -79,7 +79,7 @@ public class AuthController {
 			ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Phone number already in use!");
 		}
 		
-		User user = new User(signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getMobile(),
+		User user = new User(signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getGender(), signUpRequest.getMobile(),
 				signUpRequest.getEmail(), signUpRequest.getPassword());
 
 		user.setUsername(user.getEmail());

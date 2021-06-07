@@ -1,6 +1,7 @@
 package com.edu.smartstudentcard.model;
 
 import com.edu.smartstudentcard.enums.EAccountStatus;
+import com.edu.smartstudentcard.enums.EGender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -29,6 +30,10 @@ public class User {
 	private String fullName;
 
 	private String imageUrl;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private EGender gender;
 
 	@NotNull
 	@Column(unique = true)
@@ -63,11 +68,12 @@ public class User {
 	}
 
 	public User(@NotNull(message = "first name is compulsory") String firstName,
-			@NotNull(message = "last name is compulsory") String lastName, @NotNull String mobile,
+			@NotNull(message = "last name is compulsory") String lastName,@NotNull(message = "Gender is compulsory") EGender gender, @NotNull String mobile,
 			@NotNull @Email @Size(max = 100) String email, @NotNull @Size(min = 5, max = 100) String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.gender = gender;
 		this.mobile = mobile;
 		this.email = email;
 		this.password = password;
