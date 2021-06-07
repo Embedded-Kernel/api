@@ -49,7 +49,7 @@ public class User {
 	@NotNull
 	private String password;
 
-	@OneToOne
+	@ManyToOne
 	private Student student;
 
 	private String activationCode;

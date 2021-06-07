@@ -77,7 +77,7 @@ public class StudentController {
 
         //Save student now
         Student newStudent = new Student();
-        newStudent.setUser(newUser);
+    //    newStudent.setUser(newUser);
         newStudent.setClassName(studentDto.getClassName());
         newStudent.setAcademicYear(studentDto.getAcademicYear());
         newStudent.setDormNbr(studentDto.getDormNumber());
@@ -93,7 +93,7 @@ public class StudentController {
 //        return ResponseEntity.status(HttpStatus.CREATED).body(newStudent);
     }
 
-    //Update student by Id
+
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudentById(@PathVariable Long id, @RequestBody CreateStudentDto studentDto){
 
@@ -101,12 +101,15 @@ public class StudentController {
         Optional<Student> StudentData = studentRepository.findById(id);
 
         //Search for user and check if he exists
+    /*
         Optional<User> user = userRepository.findById(StudentData.get().getUser().getId());
         if(!user.isPresent()) {
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("User not found", false));
         }
 
+     */
         //Update user credentials
+     /*
         User userToUpdate = user.get();
         userToUpdate.setFirstName(studentDto.getFirstName());
         userToUpdate.setLastName(studentDto.getLastName());
@@ -114,11 +117,12 @@ public class StudentController {
         userToUpdate.setPassword(studentDto.getPassword());
         userRepository.save(userToUpdate);
 
+      */
 
         //Update Student
         if(StudentData.isPresent()){
             Student _student = StudentData.get();
-            _student.setUser(userToUpdate);
+       //     _student.setUser(userToUpdate);
             _student.setClassName(studentDto.getClassName());
             _student.setAcademicYear(studentDto.getAcademicYear());
             _student.setDormNbr(studentDto.getDormNumber());
