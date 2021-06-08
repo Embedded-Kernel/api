@@ -14,11 +14,9 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private User user;
-
     @NotBlank
     private String className;
+
     @NotBlank
     private String academicYear;
 
