@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/transact")
+@RequestMapping("/api/v1/transact")
 public class TransactionController {
 
     @Autowired

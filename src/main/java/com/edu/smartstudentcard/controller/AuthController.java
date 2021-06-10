@@ -30,7 +30,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
 	@Autowired
@@ -102,5 +102,4 @@ public class AuthController {
 
 		return ResponseEntity.created(location).body("Successfully registered");
 	}
-
 }
