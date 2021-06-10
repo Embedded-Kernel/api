@@ -1,5 +1,6 @@
 package com.edu.smartstudentcard.model;
 
+import com.edu.smartstudentcard.audits.TimestampAudit;
 import com.edu.smartstudentcard.enums.ECardStatus;
 import lombok.Data;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 @Data
-public class Card {
+public class Card extends TimestampAudit {
     @Id
     private String id;
     @OneToOne

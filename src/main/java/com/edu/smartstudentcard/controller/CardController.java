@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/api/v1/cards")
 public class CardController {
     @Autowired
     private ICardRepository cardRepository;

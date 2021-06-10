@@ -1,5 +1,6 @@
 package com.edu.smartstudentcard.model;
 
+import com.edu.smartstudentcard.audits.TimestampAudit;
 import com.edu.smartstudentcard.enums.EAccountStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name="users")
 @Data
-public class User {
+public class User extends TimestampAudit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,9 +50,6 @@ public class User {
 	@NotNull
 	private String password;
 
-	@ManyToOne
-	private Student student;
-
 	private String activationCode;
 
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -62,9 +60,11 @@ public class User {
 
 	}
 
-	public User(@NotNull(message = "first name is compulsory") String firstName,
-			@NotNull(message = "last name is compulsory") String lastName, @NotNull String mobile,
-			@NotNull @Email @Size(max = 100) String email, @NotNull @Size(min = 5, max = 100) String password) {
+	public User(String firstName,
+				String lastName,
+				String mobile,
+				String email,
+				String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -74,9 +74,10 @@ public class User {
 		this.status = EAccountStatus.ACTIVE;
 	}
 
-	public User(@NotNull(message = "first name is compulsory") String firstName,
-			@NotNull(message = "last name is compulsory") String lastName,
-			@NotNull @Email @Size(max = 100) String email, @NotNull @Size(min = 5, max = 100) String password) {
+	public User(String firstName,
+				String lastName,
+				String email,
+				String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
