@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "card")
 @Data
 public class Card extends TimestampAudit {
     @Id

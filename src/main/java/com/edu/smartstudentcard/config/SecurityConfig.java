@@ -80,9 +80,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
 	            .antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html",
 						"/**/*.css", "/**/*.js").permitAll()
-	            .antMatchers("/api/auth/**").permitAll()
+	            .antMatchers("/api/v1/auth/**").permitAll()
 	            .antMatchers( "/swagger-resources/**", "/swagger-ui.html","/api-docs","/v3/api-docs/**","/v2/api-docs/**").permitAll()
-				.antMatchers("/api/students/**").permitAll()
+				.antMatchers("/api/v1/students/**").permitAll()
+				.antMatchers("/api/v1/cards/**").permitAll()
 //				.antMatchers("/api/events/**").permitAll()
 //				.antMatchers("/api/cards/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/public/**", "/api/users/**", "/ussd/**").permitAll().anyRequest()

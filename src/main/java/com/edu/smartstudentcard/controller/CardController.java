@@ -39,7 +39,7 @@ public class CardController {
         Optional<Card> newCard = cardRepository.findById(cardDto.getId());
 
         if(!newCard.isPresent()){
-            Card cardToSave = newCard.get();
+            Card cardToSave = new Card();
             cardToSave.setId(cardDto.getId());
             cardToSave.setAutoAmount();
             cardToSave.setAutoStatus();

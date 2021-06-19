@@ -90,12 +90,11 @@ public class AuthController {
 		
 		Optional<Role> userRole = roleRepository.findByName(signUpRequest.getRoleName());
 
-//		System.out.println("User roles:          "+userRole.get());
-//		user.setRoles(Collections.singleton(userRole.get()));
-		user.setRoles(Collections.singleton( roleRepository.findByName(ERoleName.ROLE_ADMIN).get()));
+		System.out.println("User roles:          "+userRole.get());
+		user.setRoles(Collections.singleton(userRole.get()));
+//		user.setRoles(Collections.singleton( roleRepository.findByName(ERoleName.ROLE_ADMIN).get()));
 
 		User result = userRepository.save(user);
-		
 
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
 				.buildAndExpand(result.getUsername()).toUri();

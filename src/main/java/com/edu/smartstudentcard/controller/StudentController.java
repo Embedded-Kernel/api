@@ -66,6 +66,7 @@ public class StudentController {
         newUser.setUsername(studentDto.getUsername());
         newUser.setEmail(studentDto.getEmail());
         newUser.setMobile(studentDto.getMobile());
+        newUser.setStatus(EAccountStatus.ACTIVE);
        // newUser.setAutoStatus();
         newUser.setPassword(passwordEncoder.encode(studentDto.getPassword()));
 
@@ -80,6 +81,7 @@ public class StudentController {
     //    newStudent.setUser(newUser);
         newStudent.setClassName(studentDto.getClassName());
         newStudent.setAcademicYear(studentDto.getAcademicYear());
+        newStudent.setTableNbr(studentDto.getTableNbr());
         newStudent.setDormNbr(studentDto.getDormNumber());
         newStudent.setReligion(studentDto.getReligion());
         newStudent.setPlaceOfResidence(studentDto.getPlaceOfResidence());
